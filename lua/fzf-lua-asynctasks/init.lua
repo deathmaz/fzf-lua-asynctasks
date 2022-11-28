@@ -29,7 +29,7 @@ local default_opts = {
 function M.setup(opts)
   fzf_lua.asynctasks = function()
     opts = fzf_lua.config.normalize_opts(opts, default_opts)
-    local rows = vim.fn['asynctasks#source'](vim.go.columns * 48 / 100)
+    local rows = vim.fn['asynctasks#source'](math.floor(vim.go.columns * 48 / 100))
     fzf_lua.fzf_exec(function(cb)
       for _, e in ipairs(rows) do
         local color = fzf_lua.utils.ansi_codes
